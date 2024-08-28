@@ -291,7 +291,7 @@ body {
 }
 
 .about .row .about-img img {
-  width: 100%;
+  width: 90%;
 }
 
 .about .row .content-about {
@@ -306,6 +306,7 @@ body {
 }
 
 .about .row .content-about p {
+  margin-top: 8rem;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.5;
