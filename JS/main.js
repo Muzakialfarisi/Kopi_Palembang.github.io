@@ -39,32 +39,56 @@ document.addEventListener("click", function (e) {
 
   if (!sbox.contains(e.target) && !searchForm.contains(e.target)) {
     searchForm.classList.remove("active");
-  } 
+  }
 
   if (!scart.contains(e.target) && !shoppingCart.contains(e.target)) {
     shoppingCart.classList.remove("active");
   }
 
   // Contact Form terintegrasi dengan gmail
-  const contactForm = document.getElementById('contact-form');
+  const contactForm = document.getElementById("contact-form");
 
-  contactForm.addEventListener('submit', function(e) {
+  contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const url = e.target.action;
     const formData = new FormData(contactForm);
 
-    fetch(url,{
-      method: 'POST',
+    fetch(url, {
+      method: "POST",
       body: formData,
       mode: "no-cors",
-    }).then(() => {
-      // url
-      window.location.href='send_email.html';
-    }).catch((e) => alert('error accurced'));
+    })
+      .then(() => {
+        // url
+        window.location.href = "send_email.html";
+      })
+      .catch((e) => alert("error accurced"));
   });
-
-  
 });
 
+// Modal Box
+const itemDetailModal = document.querySelector("#item-modal-box");
+const itemDetailButtons = document.querySelectorAll(".item-detail-button");
 
+itemDetailButtons.forEach((btn) => {
+  btn.onclick = (e) => {
+    itemDetailModal.style.display = "flex";
+    e.preventDefault();
+  };
+});
+
+// klik tombol icons close
+
+document.querySelector(".close-icons").onclick = (e) => {
+  itemDetailModal.style.display = "none";
+  e.preventDefault();
+};
+
+// klik diluar content modal hilang
+const modal = document.querySelector("#item-modal-box");
+window.onclick = (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+};
